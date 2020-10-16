@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
-import Post from "./components/post";
+import AuctionItems from "../components/auctionItems";
 
 const client = require("contentful").createClient({
   space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
@@ -26,36 +26,19 @@ function HomePage() {
 
     setLoop(
       setInterval(() => {
-        console.log("loading items");
         getAuctionItems();
-      }, 5000)
+      }, 15000)
     );
 
     return function cleanup() {
-      console.log("cleaning up");
       clearInterval(loop);
     };
   }, []);
 
   return (
     <>
-      <Head>
-        <title>Next.js + Contentful</title>
-        <link
-          rel="stylesheet"
-          href="https://css.zeit.sh/v1.css"
-          type="text/css"
-        />
-      </Head>
-      {auctionItems.length > 0
-        ? auctionItems.map((p) => (
-            <div key={p.fields.title}>
-              {p.fields.title}
-              <br />
-              <span>taken: {p.fields.taken}</span>
-            </div>
-          ))
-        : null}
+      <h1 className="text-lg">NS Craft</h1>
+      <AuctionItems items={auctionItems} />
     </>
   );
 }
