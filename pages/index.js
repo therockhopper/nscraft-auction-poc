@@ -19,7 +19,9 @@ function HomePage() {
   useEffect(() => {
     async function getAuctionItems() {
       const allAuctionItems = await fetchEntries();
-      console.log(allAuctionItems);
+      do {
+        allAuctionItems.push(...allAuctionItems);
+      } while (allAuctionItems.length < 10); // ensure we allways have 10 items to test with
       setAuctionItems([...allAuctionItems]);
     }
     getAuctionItems();

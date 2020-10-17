@@ -1,7 +1,7 @@
 function AuctionItem({ fields }) {
   return (
     <div
-      className="h-64 w-64 bg-gray-200 rounded overflow-hidden p-4"
+      className="flex flex-col justify-between h-64 w-64 bg-gray-200 rounded overflow-hidden p-4 grow cursor-pointer shadow-xl text-white font-bold"
       style={{
         backgroundImage: "url(" + fields.poster.fields.file.url + ")",
         backgroundPosition: "center",
@@ -9,8 +9,16 @@ function AuctionItem({ fields }) {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <h4> {fields.title}</h4>
-      <h4> {fields.taken ? "Not Available" : "Available"}</h4>
+      <div>
+        <h4> {fields.title}</h4>
+      </div>
+      <div className="flex justify-end">
+        {fields.taken ? (
+          <span className="text-red-400">Not Available</span>
+        ) : (
+          <span className="text-green-600">Available</span>
+        )}
+      </div>
     </div>
   );
 }
