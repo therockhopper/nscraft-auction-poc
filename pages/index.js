@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import Head from "next/head";
+import Modal from "react-modal";
 import AuctionItems from "../components/auctionItems";
 
 const client = require("contentful").createClient({
@@ -33,11 +35,29 @@ function HomePage() {
     return () => clearInterval(interval);
   }, []);
 
+  Modal.setAppElement("#__next");
+
+  const router = useRouter();
+
   return (
     <div className="flex flex-col p-4">
-      <div className="flex text-blue-600 justify-center pb-12">
+      <div className="flex text-blue-600 justify-center pb-2">
         <h1 className="text-3xl font-bold">NS Craft Auction</h1>
       </div>
+      <p className="font-gray-900 px-4 py-2">
+        Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry. Lorem Ipsum has been the industry's standard dummy text ever
+        since the 1500s,
+      </p>
+      <Modal
+        isOpen={!!router.query.itemId}
+        onRequestClose={() => router.push("/")}
+        contentLabel="Item modal"
+      >
+        <div>
+          {router.query.itemId} {router.pathname}
+        </div>
+      </Modal>
       <AuctionItems items={auctionItems} />
     </div>
   );

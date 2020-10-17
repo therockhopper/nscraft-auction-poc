@@ -5,11 +5,11 @@ function AuctionItems({ items }) {
   const [showReserved, setShowReserved] = useState(true);
   const toggleShowReserved = () => {
     setShowReserved(!showReserved);
-    console.log(showReserved);
   };
 
   const [filteredItems, setFilteredItems] = useState([]);
   useEffect(() => {
+    console.log(items);
     if (showReserved) {
       // Show all items
       return setFilteredItems([...items]);
@@ -22,8 +22,7 @@ function AuctionItems({ items }) {
 
   return (
     <div>
-      <div className="cursor-pointer flex align-center">
-        {!!showReserved}
+      <div className="flex align-center p-4">
         <input
           type="checkbox"
           id="showReservedCheckBox"
@@ -32,16 +31,16 @@ function AuctionItems({ items }) {
           value={showReserved}
           onChange={() => toggleShowReserved()}
         />
-        <label htmlFor="showReservedCheckBox">Show Reserved Items</label>
+        <label className="cursor-pointer" htmlFor="showReservedCheckBox">
+          Show Reserved Items
+        </label>
       </div>
       <ul className="flex flex-wrap">
-        {filteredItems
-          ? filteredItems.map((item, index) => (
-              <li key={item.fields.title + index} className="m-4">
-                <AuctionItem fields={item.fields} />
-              </li>
-            ))
-          : null}
+        {filteredItems.map((item, index) => (
+          <li key={item.sys.id + index} className="m-4">
+            <AuctionItem item={item} />
+          </li>
+        ))}
       </ul>
     </div>
   );
