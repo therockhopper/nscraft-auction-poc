@@ -8,38 +8,29 @@ const client = require("contentful").createClient({
 });
 
 function HomePage() {
+  const [auctionItems, setAuctionItems] = useState([]);
+
   async function fetchEntries() {
     const entries = await client.getEntries({ content_type: "auctionItem" });
-    console.log(entries.items);
     if (entries.items) return entries.items;
     console.log(`Error getting Entries for ${contentType.name}.`);
   }
 
-  const [auctionItems, setAuctionItems] = useState([]);
-  const [loop, setLoop] = useState();
-
   useEffect(() => {
     async function getAuctionItems() {
       const allAuctionItems = await fetchEntries();
+      console.log(allAuctionItems);
       setAuctionItems([...allAuctionItems]);
     }
 
-    setLoop(
-      setInterval(() => {
-        getAuctionItems();
-      }, 15000)
-    );
-
-    return function cleanup() {
-      clearInterval(loop);
-    };
+    getAuctionItems();
   }, []);
 
   return (
-    <>
-      <h1 className="text-lg">NS Craft</h1>
+    <div className="flex flex-col p-4">
+      <h1 className="text-3xl font-semibold">NS Craft Auction POC</h1>
       <AuctionItems items={auctionItems} />
-    </>
+    </div>
   );
 }
 
