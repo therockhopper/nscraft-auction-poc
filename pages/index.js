@@ -23,7 +23,10 @@ function HomePage() {
       setAuctionItems([...allAuctionItems]);
     }
 
-    getAuctionItems();
+    const interval = setInterval(() => {
+      getAuctionItems();
+    }, 5000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
