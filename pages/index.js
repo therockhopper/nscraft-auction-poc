@@ -34,7 +34,7 @@ function HomePage() {
 
   return (
     <div className="flex flex-col p-4">
-      <div className="flex text-blue-600 justify-center">
+      <div className="flex text-blue-600 justify-center pb-12">
         <h1 className="text-3xl font-bold">NS Craft Auction</h1>
       </div>
       <AuctionItems items={auctionItems} />

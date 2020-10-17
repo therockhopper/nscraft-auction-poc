@@ -4,8 +4,8 @@ function AuctionItems({ items }) {
     <div>
       <ul className="flex flex-wrap">
         {items
-          ? items.map((item) => (
-              <li key={item.fields.title} className="m-4">
+          ? items.map((item, index) => (
+              <li key={item.fields.title + index} className="m-4">
                 <AuctionItem fields={item.fields} />
               </li>
             ))
