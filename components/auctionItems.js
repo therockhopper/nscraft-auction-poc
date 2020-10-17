@@ -12,13 +12,13 @@ function AuctionItems({ items }) {
   useEffect(() => {
     if (showReserved) {
       // Show all items
-      return setFilteredItems(items);
+      return setFilteredItems([...items]);
     }
 
     // Filter out some items
     const results = items.filter((item) => !item.fields.taken);
     return setFilteredItems(results);
-  }, [showReserved]);
+  }, [showReserved, items]);
 
   return (
     <div>

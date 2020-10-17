@@ -12,6 +12,7 @@ function HomePage() {
 
   async function fetchEntries() {
     const entries = await client.getEntries({ content_type: "auctionItem" });
+    console.log(entries.items);
     if (entries.items) return entries.items;
     console.log(`Error getting Entries for ${contentType.name}.`);
   }
