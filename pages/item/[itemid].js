@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
-import Item from "../../components/item";
 
-const PostPage = () => {
+const ItemPage = () => {
   const router = useRouter();
   const { itemId } = router.query;
 
@@ -12,4 +11,4 @@ const PostPage = () => {
   );
 };
 
-export default PostPage;
+export default ItemPage;

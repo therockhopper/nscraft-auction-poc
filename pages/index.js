@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import Modal from "react-modal";
 import AuctionItems from "../components/auctionItems";
+import AuctionItem from "../components/auctionItem";
 
 const client = require("contentful").createClient({
   space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
@@ -14,7 +15,6 @@ function HomePage() {
 
   async function fetchEntries() {
     const entries = await client.getEntries({ content_type: "auctionItem" });
-    console.log(entries.items);
     if (entries.items) return entries.items;
     console.log(`Error getting Entries for ${contentType.name}.`);
   }
@@ -54,9 +54,7 @@ function HomePage() {
         onRequestClose={() => router.push("/")}
         contentLabel="Item modal"
       >
-        <div>
-          {router.query.itemId} {router.pathname}
-        </div>
+        <AuctionItem id={router.query.itemId}></AuctionItem>
       </Modal>
       <AuctionItems items={auctionItems} />
     </div>

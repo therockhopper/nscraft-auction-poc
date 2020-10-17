@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import AuctionItem from "./auctionItem";
+import AuctionItem from "./auctionItemCard";
 
 function AuctionItems({ items }) {
   const [showReserved, setShowReserved] = useState(true);
@@ -9,7 +9,6 @@ function AuctionItems({ items }) {
 
   const [filteredItems, setFilteredItems] = useState([]);
   useEffect(() => {
-    console.log(items);
     if (showReserved) {
       // Show all items
       return setFilteredItems([...items]);
