@@ -1,12 +1,13 @@
 import { useRouter } from "next/router";
+import AuctionItem from "../../components/auctionItem";
 
 const ItemPage = () => {
   const router = useRouter();
-  const { itemId } = router.query;
+  const { itemId, itemid } = router.query;
 
   return (
     <div>
-      {itemId} {router.pathname}
+      <AuctionItem id={itemId || itemid}></AuctionItem>
     </div>
   );
 };
