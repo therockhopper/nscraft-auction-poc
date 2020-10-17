@@ -3,16 +3,22 @@ import AuctionItem from "./auctionItem";
 
 function AuctionItems({ items }) {
   const [showReserved, setShowReserved] = useState(true);
-  const [filteredItems, setFilteredItems] = useState([]);
-
-  useEffect(() => {
+  const toggleShowReserved = () => {
+    setShowReserved(!showReserved);
     console.log(showReserved);
-    const filteredItems = items.filter((item) => {
-      return showReserved ? true : item.fields.taken;
-    });
+  };
 
-    setFilteredItems([...filteredItems]);
-  }, []);
+  const [filteredItems, setFilteredItems] = useState([]);
+  useEffect(() => {
+    if (showReserved) {
+      // Show all items
+      return setFilteredItems(items);
+    }
+
+    // Filter out some items
+    const results = items.filter((item) => !item.fields.taken);
+    return setFilteredItems(results);
+  }, [showReserved]);
 
   return (
     <div>
@@ -24,13 +30,13 @@ function AuctionItems({ items }) {
           name="showReserved"
           className="mr-2"
           value={showReserved}
-          onChange={() => setShowReserved(!showReserved)}
+          onChange={() => toggleShowReserved()}
         />
         <label htmlFor="showReservedCheckBox">Show Reserved Items</label>
       </div>
       <ul className="flex flex-wrap">
-        {items
-          ? items.map((item, index) => (
+        {filteredItems
+          ? filteredItems.map((item, index) => (
               <li key={item.fields.title + index} className="m-4">
                 <AuctionItem fields={item.fields} />
               </li>
