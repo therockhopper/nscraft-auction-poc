@@ -22,6 +22,7 @@ function HomePage() {
       console.log(allAuctionItems);
       setAuctionItems([...allAuctionItems]);
     }
+    getAuctionItems();
 
     const interval = setInterval(() => {
       getAuctionItems();
@@ -31,7 +32,9 @@ function HomePage() {
 
   return (
     <div className="flex flex-col p-4">
-      <h1 className="text-3xl font-semibold">NS Craft Auction POC</h1>
+      <div className="flex text-blue-600 justify-center">
+        <h1 className="text-3xl font-bold">NS Craft Auction</h1>
+      </div>
       <AuctionItems items={auctionItems} />
     </div>
   );

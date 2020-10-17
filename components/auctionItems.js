@@ -2,11 +2,10 @@ import AuctionItem from "./auctionItem";
 function AuctionItems({ items }) {
   return (
     <div>
-      <h1>Auction Items {items.length}</h1>
-      <ul>
+      <ul className="flex flex-wrap">
         {items
           ? items.map((item) => (
-              <li key={item.fields.title}>
+              <li key={item.fields.title} className="m-4">
                 <AuctionItem fields={item.fields} />
               </li>
             ))
