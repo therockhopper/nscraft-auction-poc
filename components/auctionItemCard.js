@@ -1,12 +1,8 @@
 import Link from "next/link";
 function AuctionItem({ item }) {
   return (
-    <Link
-      href={`/?itemId=${item.sys.id}`}
-      as={`/item/${item.sys.id}`}
-      className="flex flex-col bg-gray-100 rounded overflow-hidden grow cursor-pointer shadow-xl text-gray-900"
-    >
-      <div>
+    <Link href={`/?itemId=${item.sys.id}`} as={`/item/${item.sys.id}`}>
+      <div className="flex flex-col bg-gray-100 rounded overflow-hidden grow cursor-pointer shadow-xl text-gray-900">
         <div
           className="h-56 w-64"
           style={{
