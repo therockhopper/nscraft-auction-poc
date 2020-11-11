@@ -9,7 +9,6 @@ function AuctionItemCarousel({item}) {
     item.fields.images.map(image => {
       pictures.push({
         url: image.fields.file.url,
-        title: image.fields.file.url,
       });
     });
     setPictures(pictures);
@@ -21,7 +20,6 @@ function AuctionItemCarousel({item}) {
           return (
             <div key={p.url + index} className="h-64" style={{height: '40vh'}}>
               <img src={'https://' + p.url} />
-              <p className="legend">{p.title}</p>
             </div>
           );
         })}
