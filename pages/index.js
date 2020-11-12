@@ -45,14 +45,13 @@ function HomePage() {
         <h1 className="text-3xl font-semibold">NS Craft Auction</h1>
       </div>
       <div className="flex bg-blue-600 h-full">
-    <div className="text-white px-4 py-2">
+    <div className="text-white px-4 py-2 w-1/2">
+    <h1 className="text-3xl font-bold">Welcome</h1>
     <p className="px-4 py-2">
-    Lorem Ipsum is simply dummy text of the printing and typesetting
-    industry. Lorem Ipsum has been the industry's standard dummy text ever
-    since the 1500s,
+      View all the items, filter by day
     </p>
     </div>
-    <img src="/svgs/home.svg" alt="home image" />
+    <img className="w-1/2" src="/svgs/home.svg" alt="home image" />
     </div>
     <Modal
     isOpen={!!router.query.itemId}
