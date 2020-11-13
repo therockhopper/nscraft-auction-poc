@@ -22,9 +22,6 @@ function HomePage() {
   useEffect(() => {
     async function getAuctionItems() {
       const allAuctionItems = await fetchEntries();
-      do {
-        allAuctionItems.push(...allAuctionItems);
-      } while (allAuctionItems.length < 10); // ensure we allways have 10 items to test with
       setAuctionItems([...allAuctionItems]);
     }
     getAuctionItems();
@@ -41,15 +38,15 @@ function HomePage() {
 
   return (
     <div className="flex flex-col">
-      <div className="flex text-gray-100 bg-blue-600 pb-2 border-b-2 border-blue-700 px-4 py-2">
-        <h1 className="text-2xl font-semibold">NS Craft Auction</h1>
-      </div>
-      <div className="flex bg-blue-600 h-full">
+    <div className="flex text-gray-100 bg-blue-600 pb-2 border-b-2 border-blue-700 px-4 py-2">
+    <h1 className="text-2xl font-semibold">NS Craft Auction</h1>
+    </div>
+    <div className="flex bg-blue-600 h-full">
     <div className="flex flex-col justify-between text-white px-4 py-2 w-1/2">
     <h3 className="font-semibold">Sort and view all the items</h3>
     <div className="flex">
     <span className="font-gray-10 mr-6">
-      80 Items
+    80 Items
     </span>
     </div>
     </div>
