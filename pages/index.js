@@ -31,7 +31,7 @@ function HomePage() {
 
     const interval = setInterval(() => {
       getAuctionItems();
-    }, 5000);
+    }, 10000);
     return () => clearInterval(interval);
   }, []);
 
@@ -41,15 +41,17 @@ function HomePage() {
 
   return (
     <div className="flex flex-col">
-      <div className="flex text-blue-800 pb-2 border-t-4 border-blue-500 px-4">
-        <h1 className="text-3xl font-semibold">NS Craft Auction</h1>
+      <div className="flex text-gray-100 bg-blue-600 pb-2 border-b-2 border-blue-700 px-4 py-2">
+        <h1 className="text-2xl font-semibold">NS Craft Auction</h1>
       </div>
       <div className="flex bg-blue-600 h-full">
-    <div className="text-white px-4 py-2 w-1/2">
-    <h1 className="text-3xl font-bold">Welcome</h1>
-    <p className="px-4 py-2">
-      View all the items, filter by day
-    </p>
+    <div className="flex flex-col justify-between text-white px-4 py-2 w-1/2">
+    <h3 className="font-semibold">Sort and view all the items</h3>
+    <div className="flex">
+    <span className="font-gray-10 mr-6">
+      80 Items
+    </span>
+    </div>
     </div>
     <img className="w-1/2" src="/svgs/home.svg" alt="home image" />
     </div>
