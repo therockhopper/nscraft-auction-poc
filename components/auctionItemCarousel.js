@@ -8,26 +8,30 @@ function AuctionItemCarousel({item}) {
     if (!item) return
     let pictures = [];
     const { images = [], poster } = item.fields
-    pictures.push({url: poster.fields.file.url})
     images.map(image => {
       pictures.push({
         url: image.fields.file.url,
       });
     });
 
+    if (!pictures) {
+      // add the poster as a fallback
+      pictures.push({url: poster.fields.file.url})
+    }
+
     setPictures(pictures);
   }, [item]);
 
   return (
-      <Carousel>
-        {pictures && pictures.map((p, index) => {
-          return (
-            <div key={p.url + index} className="h-64" style={{height: '40vh'}}>
-              <img src={'https://' + p.url} />
-            </div>
-          );
-        })}
-      </Carousel>
+    <Carousel>
+    {pictures && pictures.map((p, index) => {
+      return (
+        <div key={p.url + index} className="h-64" style={{height: '40vh'}}>
+        <img src={'https://' + p.url} />
+        </div>
+      );
+    })}
+    </Carousel>
   );
 }
 
