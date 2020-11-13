@@ -5,14 +5,16 @@ import {Carousel} from 'react-responsive-carousel';
 function AuctionItemCarousel({item}) {
   const [pictures, setPictures] = useState([]);
   useEffect(() => {
+    if (!item) return
     let pictures = [];
-    if (!item || !item.fields.images) return
-    console.log({item})
-    item.fields.images.map(image => {
+    const { images = [], poster } = item.fields
+    pictures.push({url: poster.fields.file.url})
+    images.map(image => {
       pictures.push({
         url: image.fields.file.url,
       });
     });
+
     setPictures(pictures);
   }, [item]);
 
