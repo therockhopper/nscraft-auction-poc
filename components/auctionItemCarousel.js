@@ -6,6 +6,8 @@ function AuctionItemCarousel({item}) {
   const [pictures, setPictures] = useState([]);
   useEffect(() => {
     let pictures = [];
+    if (!item || !item.fields.images) return
+    console.log({item})
     item.fields.images.map(image => {
       pictures.push({
         url: image.fields.file.url,
@@ -16,7 +18,7 @@ function AuctionItemCarousel({item}) {
 
   return (
       <Carousel>
-        {pictures.map((p, index) => {
+        {pictures && pictures.map((p, index) => {
           return (
             <div key={p.url + index} className="h-64" style={{height: '40vh'}}>
               <img src={'https://' + p.url} />
