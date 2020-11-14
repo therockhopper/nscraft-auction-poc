@@ -1,6 +1,7 @@
 import Link from 'next/link';
+import './auctionItemCard.css'
 
-function AuctionItem2({item}) {
+function AuctionItem({item}) {
   let imageStyle = {};
   if (item.fields.taken) {
     imageStyle = {
@@ -9,14 +10,14 @@ function AuctionItem2({item}) {
   }
   return (
     <Link href={`/?itemId=${item.sys.id}`} as={`/item/${item.sys.id}`}>
-      <div className="bg-gray-100 grow cursor-pointer overflow-hidden border-b-4 border-blue-500 w-full h-full">
+      <div className="auctionItem bg-gray-100 grow cursor-pointer overflow-hidden border-b-4 border-blue-500 w-full h-full">
         <img
           style={imageStyle}
           src={item.fields.poster.fields.file.url}
           alt="Item Poster"
           className="w-full object-cover h-32 sm:h-48 md:h-64"
         />
-        <div className="flex flex-col justify-between p-4 md:p-6">
+        <div className="flex flex-col justify-between px-4 pb-4">
           <p className="text-blue-500 font-semibold text-xs mb-1 leading-none">
             {item.fields.company}
           </p>
@@ -30,7 +31,7 @@ function AuctionItem2({item}) {
               <span className="text-green-600">Available</span>
             )}
 
-            <div className="flex justify-between">
+            <div className="flex justify-between pt-2">
               <p className="leading-none">${item.fields.value}</p>
               <span className="text-gray-90">
                 #{item.fields.silentAuction && 'Silent Auction'}
@@ -43,4 +44,4 @@ function AuctionItem2({item}) {
     </Link>
   );
 }
-export default AuctionItem2;
+export default AuctionItem;

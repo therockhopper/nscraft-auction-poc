@@ -1,0 +1,5 @@
+.auctionItem {
+  display: grid;
+  gird-auto-rows: auto 1fr;
+}
+
