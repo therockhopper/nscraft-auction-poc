@@ -5,6 +5,7 @@ import Modal from 'react-modal';
 import AuctionItems from '../components/auctionItems';
 import AuctionItem from '../components/auctionItem';
 import {documentToHtmlString} from '@contentful/rich-text-html-renderer';
+import './index.css'
 
 const client = require('contentful').createClient({
   space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
