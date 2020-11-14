@@ -39,13 +39,13 @@ function HomePage({homeHeroContent, homeHeroBody}) {
 
   return (
     <div className="flex flex-col">
-      <div className="flex text-gray-100 bg-blue-600 pb-2 border-b-2 border-blue-700 px-4 py-2">
-        <h1 className="text-2xl font-semibold">
+      <div className="flex text-blue-600 bg-white pb-2 border-t-4 border-blue-700 py-2">
+        <h1 className="text-2xl font-semibold w-full border-b-2 border-gray-300 pl-4">
           {homeHeroContent.navbarTitle}
         </h1>
       </div>
-      <div className="flex bg-blue-600 h-full xl:h-64">
-        <div className="flex flex-col justify-between text-white px-4 p-4">
+      <div className="flex h-full xl:h-64">
+        <div className="flex flex-col justify-between px-4 py-2">
           <div dangerouslySetInnerHTML={homeHeroBody}></div>
     </div>
     </div>

@@ -1,10 +1,17 @@
 import Link from 'next/link';
 
 function AuctionItem2({item}) {
+  let imageStyle = {};
+  if (item.fields.taken) {
+    imageStyle = {
+      filter: 'grayscale(90%) blur(3px)',
+    };
+  }
   return (
     <Link href={`/?itemId=${item.sys.id}`} as={`/item/${item.sys.id}`}>
       <div className="bg-gray-100 grow cursor-pointer overflow-hidden border-b-4 border-blue-500 w-full h-full">
         <img
+          style={imageStyle}
           src={item.fields.poster.fields.file.url}
           alt="Item Poster"
           className="w-full object-cover h-32 sm:h-48 md:h-64"
@@ -26,8 +33,8 @@ function AuctionItem2({item}) {
             <div className="flex justify-between">
               <p className="leading-none">${item.fields.value}</p>
               <span className="text-gray-90">
-              { item.fields.silentAuction && 'Silent Auction' }
-              { !item.fields.silentAuction && item.fields.itemNumber || 0 }
+                {item.fields.silentAuction && 'Silent Auction'}
+                {(!item.fields.silentAuction && item.fields.itemNumber) || 0}
               </span>
             </div>
           </div>
