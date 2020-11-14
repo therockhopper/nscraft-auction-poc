@@ -5,7 +5,7 @@ import Modal from 'react-modal';
 import AuctionItems from '../components/auctionItems';
 import AuctionItem from '../components/auctionItem';
 import {documentToHtmlString} from '@contentful/rich-text-html-renderer';
-import './index.css'
+import './index.css';
 
 const client = require('contentful').createClient({
   space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
@@ -45,18 +45,17 @@ function HomePage({homeHeroContent, homeHeroBody}) {
         </h1>
       </div>
       <div className="flex bg-blue-600 h-full xl:h-64">
-        <div className="flex flex-col justify-between text-white px-4 py-2 w-1/2">
+        <div className="flex flex-col justify-between text-white px-4 p-4">
           <div dangerouslySetInnerHTML={homeHeroBody}></div>
-        </div>
-        <img className="w-1/2 invisible lg:visible" src="/svgs/home.svg" alt="home image" />
-      </div>
-      <Modal
-        isOpen={!!router.query.itemId}
-        onRequestClose={() => router.push('/')}
-        contentLabel="Item modal">
-        <AuctionItem id={router.query.itemId}></AuctionItem>
-      </Modal>
-      <AuctionItems items={auctionItems} />
+    </div>
+    </div>
+    <Modal
+    isOpen={!!router.query.itemId}
+    onRequestClose={() => router.push('/')}
+    contentLabel="Item modal">
+    <AuctionItem id={router.query.itemId}></AuctionItem>
+    </Modal>
+    <AuctionItems items={auctionItems} />
     </div>
   );
 }
