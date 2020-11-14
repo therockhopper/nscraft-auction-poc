@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import AuctionItem2 from './auctionItemCard2';
+import AuctionItem from './auctionItemCard';
 import './auctionItems.css';
 
 function AuctionItems({items}) {
@@ -88,7 +88,7 @@ function AuctionItems({items}) {
             id="searchItems"
             value={textSearch}
             onChange={e => setTextSearch(e.target.value)}
-            className="px-2 py-1 border-b-2 border-gray-400 focus:border-blue-500 outline-none"
+            className="px-2 my-1 border-b-2 border-gray-400 focus:border-blue-500 outline-none"
           />
         </div>
         <div className="mx-6 flex flex-col md:flex-row md:items-center md:align-center order-1 lg:order-2">
@@ -148,11 +148,11 @@ function AuctionItems({items}) {
           </div>
         </div>
       </div>
-      <ul className="auctionItems">
+      <ul className="auctionItems px-2">
         {!!filteredItems &&
           filteredItems.map((item, index) => (
             <li key={item.sys.id + index}>
-              <AuctionItem2 item={item} />
+              <AuctionItem item={item} />
             </li>
           ))}
       </ul>

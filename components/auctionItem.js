@@ -23,13 +23,13 @@ function AuctionItem({id}) {
   }, [id]);
 
   return (
-    <div className="flex flex-col p-4">
+    <div className="flex flex-col md:p-4">
       {!!item ? (
-        <div>
-        <div>
-        <AuctionItemCarousel item={item} />
-        </div>
-        <AuctionItemBody item={item} />
+        <div className="flex flex-col md:flex-row">
+          <AuctionItemCarousel item={item} />
+          <div className="md:ml-6">
+            <AuctionItemBody item={item} />
+          </div>
         </div>
       ) : (
         'loading..'

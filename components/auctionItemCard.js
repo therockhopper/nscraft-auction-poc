@@ -1,51 +1,33 @@
 import Link from 'next/link';
 
-function AuctionItem({item}) {
-  let imageStyle = {}
-  if (item.fields.taken) {
-    imageStyle = {
-      filter: 'grayscale(90%) blur(3px)',
-    }
-  }
+function AuctionItem2({item}) {
   return (
     <Link href={`/?itemId=${item.sys.id}`} as={`/item/${item.sys.id}`}>
-      <div className="h-full relative flex flex-col bg-gray-100 rounded overflow-hidden grow cursor-pointer shadow-xl text-gray-900 w-full">
-        <div
-          style={{
-            ...imageStyle,
-            height: '25vh',
-            width: '100%',
-            backgroundImage: 'url(' + item.fields.poster.fields.file.url + ')',
-            backgroundPosition: 'center',
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat',
-          }}>
-          </div>
-          {item.fields.taken && <div className="absolute flex h-full w-full justify-center items-center font-bold text-red-500 text-5xl">Reserved</div>}
-        <div className="p-2 flex flex-col">
-          <h2 className="pb-2">{item.fields.title}</h2>
-          <span className="font-semibold">
-            {item.fields.subtitle || 'subtitle'}
-          </span>
-          <span> {item.fields.company || 'company name'}</span>
-          <span> ${item.fields.value || 'N/A'}</span>
-        </div>
-        <div className="flex p-2 justify-between">
-          <div>
-            <span className="text-gray-90">
-              {' '}
-              #{item.fields.itemNumber || 0}{' '}
-            </span>
+      <div className="bg-gray-100 grow cursor-pointer overflow-hidden border-b-4 border-blue-500 w-full h-full">
+        <img
+          src={item.fields.poster.fields.file.url}
+          alt="Item Poster"
+          className="w-full object-cover h-32 sm:h-48 md:h-64"
+        />
+        <div className="flex flex-col justify-between p-4 md:p-6">
+          <p className="text-blue-500 font-semibold text-xs mb-1 leading-none">
+            {item.fields.company}
+          </p>
+          <h3 className="font-semibold mb-2 text-xl leading-tight sm:leading-normal">
+            {item.fields.title}
+          </h3>
+          <div className="text-sm flex flex-col justify-between h-full">
             {item.fields.taken ? (
               <span className="text-red-400">Reserved</span>
             ) : (
               <span className="text-green-600">Available</span>
             )}
-            <div>
+
+            <div className="flex justify-between">
+              <p className="leading-none">${item.fields.value}</p>
               <span className="text-gray-90">
-                {item.fields.itemNumber || 0 < 40
-                  ? 'Day one item'
-                  : 'Day two item'}
+              { item.fields.silentAuction && 'Silent Auction' }
+              { !item.fields.silentAuction && item.fields.itemNumber || 0 }
               </span>
             </div>
           </div>
@@ -54,5 +36,4 @@ function AuctionItem({item}) {
     </Link>
   );
 }
-
-export default AuctionItem;
+export default AuctionItem2;

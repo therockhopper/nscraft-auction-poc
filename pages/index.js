@@ -44,7 +44,7 @@ function HomePage({homeHeroContent, homeHeroBody}) {
           {homeHeroContent.navbarTitle}
         </h1>
       </div>
-      <div className="flex bg-blue-600 h-full">
+      <div className="flex bg-blue-600 h-full xl:h-64">
         <div className="flex flex-col justify-between text-white px-4 py-2 w-1/2">
           <div dangerouslySetInnerHTML={homeHeroBody}></div>
         </div>
