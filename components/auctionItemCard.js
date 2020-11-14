@@ -33,7 +33,7 @@ function AuctionItem2({item}) {
             <div className="flex justify-between">
               <p className="leading-none">${item.fields.value}</p>
               <span className="text-gray-90">
-                {item.fields.silentAuction && 'Silent Auction'}
+                #{item.fields.silentAuction && 'Silent Auction'}
                 {(!item.fields.silentAuction && item.fields.itemNumber) || 0}
               </span>
             </div>
