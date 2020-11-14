@@ -29,7 +29,7 @@ function AuctionItems({items}) {
 
     // Filter by day to start
     items.map(item => {
-      const {itemNumber = 0, taken, silentAuction} = item.fields;
+      const {itemNumber = 0, taken } = item.fields;
       if (!showReserved && taken) return;
 
       if (
@@ -42,9 +42,10 @@ function AuctionItems({items}) {
         return;
       }
 
-      if (!showSilentAuction && silentAuction) {
+      console.log(showSilentAuction)
+      if (showSilentAuction && itemNumber > 80) {
         // don't show silent auction item
-        return;
+        results.push(item);
       }
 
       if (showDayOne && itemNumber < 40) {
@@ -117,7 +118,7 @@ function AuctionItems({items}) {
               onChange={() => toggleShowDayOne()}
             />
             <label className="cursor-pointer mr-6" htmlFor="showDayOne">
-              Day One Items
+              6pm-8pm Items
             </label>
           </div>
           <div className="flex py-2 items-center">
@@ -130,7 +131,7 @@ function AuctionItems({items}) {
               onChange={() => toggleShowDayTwo()}
             />
             <label className="cursor-pointer mr-6" htmlFor="showDayTwo">
-              Day Two Items
+              8:30pm-10:30pm Items
             </label>
           </div>
           <div className="flex py-2 items-center">
