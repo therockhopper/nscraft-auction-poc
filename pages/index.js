@@ -48,7 +48,7 @@ function HomePage({homeHeroContent, homeHeroBody}) {
         <div className="flex flex-col justify-between text-white px-4 py-2 w-1/2">
           <div dangerouslySetInnerHTML={homeHeroBody}></div>
         </div>
-        <img className="w-1/2" src="/svgs/home.svg" alt="home image" />
+        <img className="w-1/2 invisible lg:visible" src="/svgs/home.svg" alt="home image" />
       </div>
       <Modal
         isOpen={!!router.query.itemId}
