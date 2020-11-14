@@ -9,7 +9,7 @@ function AuctionItem2({item}) {
           alt="Item Poster"
           className="w-full object-cover h-32 sm:h-48 md:h-64"
         />
-        <div className="p-4 md:p-6">
+        <div className="flex flex-col justify-between p-4 md:p-6">
           <p className="text-blue-500 font-semibold text-xs mb-1 leading-none">
             {item.fields.company}
           </p>
@@ -17,16 +17,17 @@ function AuctionItem2({item}) {
             {item.fields.title}
           </h3>
           <div className="text-sm flex flex-col justify-between h-full">
-            <span className="text-gray-90">
-             #{item.fields.itemNumber || 0}
-            </span>
+            {item.fields.taken ? (
+              <span className="text-red-400">Reserved</span>
+            ) : (
+              <span className="text-green-600">Available</span>
+            )}
 
             <div className="flex justify-between">
-              {item.fields.taken ? (
-                <span className="text-red-400">Reserved</span>
-              ) : (
-                <span className="text-green-600">Available</span>
-              )}
+              <span className="text-gray-90">
+                #{item.fields.itemNumber || 0}
+              </span>
+
               <p className="leading-none">${item.fields.value}</p>
             </div>
           </div>

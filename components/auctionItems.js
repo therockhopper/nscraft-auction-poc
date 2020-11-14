@@ -28,7 +28,7 @@ function AuctionItems({items}) {
       const {itemNumber = 0, taken} = item.fields;
       if (!showReserved && taken) return;
 
-      if (!!textSearch && !JSON.stringify(item).includes(textSearch)) {
+      if (!!textSearch && !JSON.stringify(item).toLowerCase().includes(textSearch.toLowerCase())) {
         // does not match text search
         return;
       }
