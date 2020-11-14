@@ -1,0 +1,19 @@
+.auctionItems {
+  display: grid;
+  grid-template-columns: auto;
+  grid-gap: 2rem;
+  grid-auto-rows: 1fr;
+}
+
+@media screen and (min-width: 750px) {
+  .auctionItems {
+    grid-template-columns: auto auto;
+  }
+}
+
+
+@media screen and (min-width: 1400px) {
+  .auctionItems {
+    grid-template-columns: auto auto auto;
+  }
+}

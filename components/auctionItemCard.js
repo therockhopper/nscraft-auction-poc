@@ -9,7 +9,7 @@ function AuctionItem({item}) {
   }
   return (
     <Link href={`/?itemId=${item.sys.id}`} as={`/item/${item.sys.id}`}>
-      <div className="relative flex flex-col bg-gray-100 rounded overflow-hidden grow cursor-pointer shadow-xl text-gray-900 h-full w-full max-w-sm">
+      <div className="h-full relative flex flex-col bg-gray-100 rounded overflow-hidden grow cursor-pointer shadow-xl text-gray-900 w-full">
         <div
           style={{
             ...imageStyle,
@@ -22,7 +22,7 @@ function AuctionItem({item}) {
           }}>
           </div>
           {item.fields.taken && <div className="absolute flex h-full w-full justify-center items-center font-bold text-red-500 text-5xl">Reserved</div>}
-        <div className="p-2 flex flex-col h-48">
+        <div className="p-2 flex flex-col">
           <h2 className="pb-2">{item.fields.title}</h2>
           <span className="font-semibold">
             {item.fields.subtitle || 'subtitle'}
