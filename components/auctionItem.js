@@ -26,7 +26,9 @@ function AuctionItem({id}) {
     <div className="flex flex-col md:p-4">
       {!!item ? (
         <div className="flex flex-col md:flex-row">
-          <AuctionItemCarousel item={item} />
+          <div className="w-full md:w-1/3 lg:w-1/2">
+            <AuctionItemCarousel item={item} />
+          </div>
           <div className="md:ml-6">
             <AuctionItemBody item={item} />
           </div>

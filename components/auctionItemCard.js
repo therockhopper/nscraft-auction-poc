@@ -40,14 +40,14 @@ function AuctionItem({item}) {
               <span className="text-sm italic text-gray-700">value</span>
             </p>
           </div>
-          <div class="flex flex-col">
+          <div className="flex flex-col items-end">
             <span className="text-sm font-semibold text-gray-700">
               {item.fields.subtitle}
             </span>
             <span className="text-gray-90 text-sm flex justify-end">
-              {item.fields.itemNumber > 80 && 'Silent Auction'}
-              {item.fields.itemNumber < 81 && '#'}
-              {item.fields.itemNumber < 81 && item.fields.itemNumber}
+              {item.fields.itemNumber > 80 && 'Silent Auction '}
+              {item.fields.itemNumber && '#'}
+              {item.fields.itemNumber && item.fields.itemNumber}
             </span>
           </div>
         </div>

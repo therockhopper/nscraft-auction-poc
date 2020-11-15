@@ -4,6 +4,7 @@ import Head from 'next/head';
 import Modal from 'react-modal';
 import AuctionItems from '../components/auctionItems';
 import AuctionItem from '../components/auctionItem';
+import {INLINES} from '@contentful/rich-text-types';
 import {documentToHtmlString} from '@contentful/rich-text-html-renderer';
 import './index.css';
 
@@ -12,8 +13,22 @@ const client = require('contentful').createClient({
   accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN,
 });
 
+const options = {
+  renderNode: {
+    [INLINES.HYPERLINK]: node => (
+      <a
+        href={node.data.uri}
+        target="_blank"
+        rel="noopner"
+        className="underline text-blue-500">
+        {JSON.stringify(node.content[0])}
+      </a>
+    ),
+  },
+};
+
 function HomePage({homeHeroContent, homeHeroBody}) {
-  const [auctionItems, setAuctionItems] = useState([]);
+  const [auctionItems, setAuctionItems] = useState([])
 
   async function fetchEntries() {
     const entries = await client.getEntries({content_type: 'auctionItem'});
@@ -39,14 +54,14 @@ function HomePage({homeHeroContent, homeHeroBody}) {
 
   return (
     <div className="flex flex-col">
-      <div className="flex text-blue-600 bg-white pb-2 border-t-4 border-blue-700 py-2">
-        <h1 className="text-2xl font-semibold w-full border-b-2 border-gray-300 pl-4">
-          {homeHeroContent.navbarTitle}
-        </h1>
-      </div>
-      <div className="flex h-full">
-        <div className="flex flex-col justify-between px-4 py-2">
-          <div dangerouslySetInnerHTML={homeHeroBody}></div>
+    <div className="flex text-blue-600 bg-white pb-2 border-t-4 border-blue-700 py-2">
+    <h1 className="text-2xl font-semibold w-full border-b-2 border-gray-300 pl-4">
+    {homeHeroContent.navbarTitle}
+    </h1>
+    </div>
+    <div className="flex h-full">
+    <div className="flex flex-col justify-between px-4 py-2">
+    <div dangerouslySetInnerHTML={homeHeroBody}></div>
     </div>
     </div>
     <Modal
@@ -63,7 +78,10 @@ function HomePage({homeHeroContent, homeHeroBody}) {
 export async function getServerSideProps(context) {
   const resp = await client.getEntry('1RrCILWJJh8DwK3QtINEiy');
   const homeHeroContent = resp.fields;
-  const rendredHTML = await documentToHtmlString(resp.fields.heroBodyText);
+  const rendredHTML = await documentToHtmlString(
+    resp.fields.heroBodyText,
+    options,
+  );
   const homeHeroBody = {__html: rendredHTML};
   return {
     props: {homeHeroContent, homeHeroBody},

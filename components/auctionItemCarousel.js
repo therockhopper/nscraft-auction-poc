@@ -23,7 +23,7 @@ function AuctionItemCarousel({item}) {
   }, [item]);
 
   return (
-    <Carousel className="w-64">
+    <Carousel className="w-full">
     {pictures && pictures.map((p, index) => {
       return (
         <div key={p.url + index}>

@@ -42,7 +42,6 @@ function AuctionItems({items}) {
         return;
       }
 
-      console.log(showSilentAuction)
       if (showSilentAuction && itemNumber > 80) {
         // don't show silent auction item
         results.push(item);
@@ -61,9 +60,6 @@ function AuctionItems({items}) {
     });
 
     results = results.filter(i => {
-      if (!i.fields.poster) {
-        console.log(i);
-      }
       return !!i.fields.poster;
     });
     return setFilteredItems(results);
