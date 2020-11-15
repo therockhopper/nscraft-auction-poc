@@ -46,6 +46,7 @@ function AuctionItems({items}) {
       if (showSilentAuction && itemNumber > 80) {
         // don't show silent auction item
         results.push(item);
+        return;
       }
 
       if (showDayOne && itemNumber < 40) {
