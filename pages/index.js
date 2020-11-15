@@ -28,7 +28,7 @@ const options = {
 };
 
 function HomePage({homeHeroContent, homeHeroBody}) {
-  const [auctionItems, setAuctionItems] = useState([])
+  const [auctionItems, setAuctionItems] = useState([]);
 
   async function fetchEntries() {
     const entries = await client.getEntries({content_type: 'auctionItem'});
@@ -54,23 +54,24 @@ function HomePage({homeHeroContent, homeHeroBody}) {
 
   return (
     <div className="flex flex-col">
-    <div className="flex text-blue-600 bg-white pb-2 border-t-4 border-blue-700 py-2">
-    <h1 className="text-2xl font-semibold w-full border-b-2 border-gray-300 pl-4">
-    {homeHeroContent.navbarTitle}
-    </h1>
-    </div>
-    <div className="flex h-full">
-    <div className="flex flex-col justify-between px-4 py-2">
-    <div dangerouslySetInnerHTML={homeHeroBody}></div>
-    </div>
-    </div>
-    <Modal
-    isOpen={!!router.query.itemId}
-    onRequestClose={() => router.push('/')}
-    contentLabel="Item modal">
-    <AuctionItem id={router.query.itemId}></AuctionItem>
-    </Modal>
-    <AuctionItems items={auctionItems} />
+      <div className="flex text-blue-600 bg-white pb-2 border-t-4 border-blue-700 py-2">
+        <h1 className="flex text-2xl items-center font-semibold w-full border-b-2 border-gray-300 pl-4">
+        <img className="w-auto pr-4" src="./images/craftNS.png"/>
+          {homeHeroContent.navbarTitle}
+        </h1>
+      </div>
+      <div className="flex h-full flex-col md:flex-row">
+        <div className="flex flex-col justify-between px-4 py-2">
+          <div dangerouslySetInnerHTML={homeHeroBody}></div>
+        </div>
+      </div>
+      <Modal
+        isOpen={!!router.query.itemId}
+        onRequestClose={() => router.push('/')}
+        contentLabel="Item modal">
+        <AuctionItem id={router.query.itemId}></AuctionItem>
+      </Modal>
+      <AuctionItems items={auctionItems} />
     </div>
   );
 }
