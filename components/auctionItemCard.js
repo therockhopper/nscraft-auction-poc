@@ -30,7 +30,7 @@ function AuctionItem({item}) {
         <div className="flex justify-between p-4">
           <div className="flex flex-col ">
             {item.fields.taken ? (
-              <span className="text-red-400">Reserved</span>
+              <span className="text-red-400">Acquired</span>
             ) : (
               <span className="text-green-600">Available</span>
             )}

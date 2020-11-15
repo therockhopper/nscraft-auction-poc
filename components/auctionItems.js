@@ -48,7 +48,7 @@ function AuctionItems({items}) {
         return;
       }
 
-      if (showDayOne && itemNumber < 40) {
+      if (showDayOne && itemNumber <= 40) {
         results.push(item);
         return;
       }
@@ -60,6 +60,7 @@ function AuctionItems({items}) {
     });
 
     results = results.filter(i => {
+      if (!i.fields.poster) console.log(i)
       return !!i.fields.poster;
     });
     return setFilteredItems(results);
