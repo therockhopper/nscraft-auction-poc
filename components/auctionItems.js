@@ -29,7 +29,7 @@ function AuctionItems({items}) {
 
     // Filter by day to start
     items.map(item => {
-      const {itemNumber = 0, taken } = item.fields;
+      const {itemNumber = 0, taken} = item.fields;
       if (!showReserved && taken) return;
 
       if (
@@ -53,15 +53,20 @@ function AuctionItems({items}) {
         return;
       }
 
-      if (showDayTwo && itemNumber > 40) {
+      if (showDayTwo && itemNumber > 40 && itemNumber <= 80) {
         results.push(item);
         return;
       }
     });
 
     results = results.filter(i => {
-      if (!i.fields.poster) console.log(i)
+      if (!i.fields.poster) console.log(i);
       return !!i.fields.poster;
+    });
+
+    // Sort by Item Number
+    results.sort(function(a, b) {
+      return a.fields.itemNumber - b.fields.itemNumber;
     });
     return setFilteredItems(results);
   }, [showReserved, showDayOne, showDayTwo, textSearch, items]);
