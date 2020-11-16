@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 import AuctionItems from '../components/auctionItems';
 import AuctionItem from '../components/auctionItem';
 import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
-import options from './contentfullRichTextOptions'
+import options from '../components/contentfullRichTextOptions'
 import './index.css';
 
 const client = require('contentful').createClient({

@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
-import options from '../pages/contentfullRichTextOptions';
+import options from './contentfullRichTextOptions';
 
 export default function AuctionItemBody({item}) {
   const [description, setDescription] = useState('');
