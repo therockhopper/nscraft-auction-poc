@@ -1,13 +1,17 @@
 import {useEffect, useState} from 'react';
-import {documentToHtmlString} from '@contentful/rich-text-html-renderer';
+import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
+import options from '../pages/contentfullRichTextOptions';
 
 export default function AuctionItemBody({item}) {
-  const [description, setDescription] = useState({__html: ''});
+  const [description, setDescription] = useState('');
   useEffect(() => {
     async function getData() {
       try {
-        const rendredHTML = await documentToHtmlString(item.fields.description);
-        setDescription({__html: rendredHTML});
+        const rendredHTML = await documentToReactComponents(
+          item.fields.description,
+          options,
+        );
+        setDescription(rendredHTML);
       } catch (e) {}
     }
     if (item) {
@@ -36,7 +40,7 @@ export default function AuctionItemBody({item}) {
         </span>
       </div>
 
-      <div className="text-gray-900" dangerouslySetInnerHTML={description} />
+      <div className="text-gray-900"> {description}</div>
     </div>
   );
 }

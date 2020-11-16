@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@contentful/rich-text-html-renderer": "^14.1.2",
+    "@contentful/rich-text-react-renderer": "^14.1.2",
     "@fullhuman/postcss-purgecss": "^3.0.0",
     "@zeit/next-css": "^1.0.1",
     "contentful": "^7.14.8",

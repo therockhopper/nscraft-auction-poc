@@ -5,8 +5,8 @@ import Head from 'next/head';
 import Modal from 'react-modal';
 import AuctionItems from '../components/auctionItems';
 import AuctionItem from '../components/auctionItem';
-import {INLINES} from '@contentful/rich-text-types';
-import {documentToHtmlString} from '@contentful/rich-text-html-renderer';
+import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
+import options from './contentfullRichTextOptions'
 import './index.css';
 
 const client = require('contentful').createClient({
@@ -14,25 +14,11 @@ const client = require('contentful').createClient({
   accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN,
 });
 
-const options = {
-  renderNode: {
-    /*
-    [INLINES.HYPERLINK]: node => (
-      <a
-        href={node.data.uri}
-        target="_blank"
-        rel="noopner"
-        className="underline text-blue-500">
-        {JSON.stringify(node.content[0])}
-      </a>
-    ),
-    */
-  },
-};
 
-function HomePage({homeHeroContent, homeHeroBody}) {
+function HomePage({homeHeroContent}) {
   const [isOpen, setIsOpen] = useState(false);
   const [auctionItems, setAuctionItems] = useState([]);
+  const [homeHeroBody, setHomeHeroBody] = useState([]);
 
   async function fetchEntries() {
     const entries = await client.getEntries({content_type: 'auctionItem'});
@@ -40,6 +26,15 @@ function HomePage({homeHeroContent, homeHeroBody}) {
   }
 
   useEffect(() => {
+    async function createBodyText() {
+      const homeHeroBody = await documentToReactComponents(
+        homeHeroContent.heroBodyText,
+        options,
+      );
+      setHomeHeroBody(homeHeroBody);
+    }
+    createBodyText();
+
     async function getAuctionItems() {
       const allAuctionItems = await fetchEntries();
       setAuctionItems(allAuctionItems);
@@ -59,7 +54,7 @@ function HomePage({homeHeroContent, homeHeroBody}) {
   useEffect(() => {
     const open = !!router.query.itemId;
     open ? noScroll.on() : noScroll.off();
-    setIsOpen(open)
+    setIsOpen(open);
   }, [router]);
 
   return (
@@ -72,7 +67,7 @@ function HomePage({homeHeroContent, homeHeroBody}) {
       </div>
       <div className="flex h-full flex-col md:flex-row">
         <div className="flex flex-col justify-between px-4 py-2">
-          <div dangerouslySetInnerHTML={homeHeroBody}></div>
+          {homeHeroBody}
         </div>
       </div>
       <Modal
@@ -90,13 +85,8 @@ function HomePage({homeHeroContent, homeHeroBody}) {
 export async function getServerSideProps(context) {
   const resp = await client.getEntry('1RrCILWJJh8DwK3QtINEiy');
   const homeHeroContent = resp.fields;
-  const rendredHTML = await documentToHtmlString(
-    resp.fields.heroBodyText,
-    options,
-  );
-  const homeHeroBody = {__html: rendredHTML};
   return {
-    props: {homeHeroContent, homeHeroBody},
+    props: {homeHeroContent},
   };
 }
 
