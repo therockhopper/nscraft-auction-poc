@@ -108,7 +108,7 @@ function AuctionItems({items}) {
             <label
               className="cursor-pointer mr-6"
               htmlFor="showReservedCheckBox">
-              Reserved Items
+              Acquired Items
             </label>
           </div>
           <div className="flex py-2 items-center">

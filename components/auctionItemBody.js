@@ -23,15 +23,16 @@ export default function AuctionItemBody({item}) {
       <h1 className="font-bold text-xl">{item.fields.title}</h1>
       <div className="text-sm flex flex-col justify-between h-full py-2">
         {item.fields.taken ? (
-          <span className="text-red-400 pb-2">Reserved</span>
+          <span className="text-red-400 pb-2">Acquired</span>
         ) : (
           <span className="text-green-600 pb-2">Available</span>
         )}
 
         <p className="leading-none pb-2">${item.fields.value}</p>
         <span className="text-gray-90">
-          #{item.fields.silentAuction && 'Silent Auction'}
-          {(!item.fields.silentAuction && item.fields.itemNumber) || 0}
+          {item.fields.itemNumber > 80 && 'Silent Auction '}
+          {item.fields.itemNumber && '#'}
+          {item.fields.itemNumber && item.fields.itemNumber}
         </span>
       </div>
 
