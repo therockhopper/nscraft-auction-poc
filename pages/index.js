@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import noScroll from 'no-scroll';
 import {useRouter} from 'next/router';
 import Head from 'next/head';
 import Modal from 'react-modal';
@@ -15,6 +16,7 @@ const client = require('contentful').createClient({
 
 const options = {
   renderNode: {
+    /*
     [INLINES.HYPERLINK]: node => (
       <a
         href={node.data.uri}
@@ -24,10 +26,12 @@ const options = {
         {JSON.stringify(node.content[0])}
       </a>
     ),
+    */
   },
 };
 
 function HomePage({homeHeroContent, homeHeroBody}) {
+  const [isOpen, setIsOpen] = useState(false);
   const [auctionItems, setAuctionItems] = useState([]);
 
   async function fetchEntries() {
@@ -52,11 +56,17 @@ function HomePage({homeHeroContent, homeHeroBody}) {
 
   const router = useRouter();
 
+  useEffect(() => {
+    const open = !!router.query.itemId;
+    open ? noScroll.on() : noScroll.off();
+    setIsOpen(open)
+  }, [router]);
+
   return (
     <div className="flex flex-col">
       <div className="flex text-blue-600 bg-white pb-2 border-t-4 border-blue-700 py-2">
         <h1 className="flex text-2xl items-center font-semibold w-full border-b-2 border-gray-300 pl-4">
-        <img className="w-auto pr-4" src="./images/craftNS.png"/>
+          <img className="w-auto pr-4" src="./images/craftNS.png" />
           {homeHeroContent.navbarTitle}
         </h1>
       </div>
@@ -66,8 +76,9 @@ function HomePage({homeHeroContent, homeHeroBody}) {
         </div>
       </div>
       <Modal
-        isOpen={!!router.query.itemId}
+        isOpen={isOpen}
         onRequestClose={() => router.push('/')}
+        shouldFocusAfterRender={false}
         contentLabel="Item modal">
         <AuctionItem id={router.query.itemId}></AuctionItem>
       </Modal>
