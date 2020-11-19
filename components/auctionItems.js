@@ -30,7 +30,6 @@ function AuctionItems({items}) {
     // Filter by day to start
     items.map(item => {
       const {itemNumber = 0, taken} = item.fields;
-      if (!showReserved && taken) return;
 
       if (
         !!textSearch &&
@@ -40,6 +39,15 @@ function AuctionItems({items}) {
       ) {
         // does not match text search
         return;
+      }
+
+      if (taken) {
+        if (!showDayOne && !showDayTwo && showReserved) {
+          results.push(item); // The user only wants to see all the reserved items
+          return;
+        }
+
+        if (!showReserved) return;
       }
 
       if (showSilentAuction && itemNumber > 80) {
@@ -55,11 +63,6 @@ function AuctionItems({items}) {
 
       if (showDayTwo && itemNumber > 40 && itemNumber <= 80) {
         results.push(item);
-        return;
-      }
-
-      if (!showDayOne && !showDayTwo && showReserved && taken) {
-        results.push(item); // The user only wants to see all the reserved items
         return;
       }
     });
@@ -165,7 +168,9 @@ function AuctionItems({items}) {
             </li>
           ))
         ) : (
-          <li className="text-gray-700 font-semibold italic px-4 py-2">No Items match the filters selected</li>
+          <li className="text-gray-700 font-semibold italic px-4 py-2">
+            No Items match the filters selected
+          </li>
         )}
       </ul>
     </div>
