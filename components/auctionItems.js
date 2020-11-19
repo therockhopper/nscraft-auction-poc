@@ -57,6 +57,11 @@ function AuctionItems({items}) {
         results.push(item);
         return;
       }
+
+      if (!showDayOne && !showDayTwo && showReserved && taken) {
+        results.push(item); // The user only wants to see all the reserved items
+        return;
+      }
     });
 
     results = results.filter(i => {
@@ -153,12 +158,15 @@ function AuctionItems({items}) {
         </div>
       </div>
       <ul className="auctionItems px-2">
-        {!!filteredItems &&
+        {!!filteredItems && filteredItems.length ? (
           filteredItems.map((item, index) => (
             <li key={item.sys.id + index}>
               <AuctionItem item={item} />
             </li>
-          ))}
+          ))
+        ) : (
+          <li className="text-gray-700 font-semibold italic px-4 py-2">No Items match the filters selected</li>
+        )}
       </ul>
     </div>
   );
