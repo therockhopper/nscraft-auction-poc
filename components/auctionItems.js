@@ -82,7 +82,7 @@ function AuctionItems({items}) {
   return (
     <div>
       <div className="flex flex-col lg:flex-row align-center p-4">
-        <div className="flex pb-6 lg:pb-0 align-center order-2 lg:order-2 py-2">
+        <div className="flex mb-6 lg:mb-0 align-center items-center order-2 lg:order-2 py-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
@@ -100,7 +100,7 @@ function AuctionItems({items}) {
             id="searchItems"
             value={textSearch}
             onChange={e => setTextSearch(e.target.value)}
-            className="px-2 my-1 border-b-2 border-gray-400 focus:border-blue-500 outline-none"
+            className="px-2 my-1 border-b-2 border-gray-400 focus:border-blue-500 outline-none h-8"
           />
         </div>
         <div className="mx-6 flex flex-col md:flex-row md:items-center md:align-center order-1 lg:order-2">
