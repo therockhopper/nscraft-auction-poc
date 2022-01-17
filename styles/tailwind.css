@@ -1,9 +1,0 @@
-/* purgecss start ignore */
-@tailwind  base;
-@tailwind  components;
-/* purgecss end ignore */
-@tailwind  utilities;
-
-.grow { transition: all .2s ease-in-out; }
-.grow:hover { transform: scale(1.05); }
-

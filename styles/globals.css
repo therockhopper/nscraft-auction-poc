@@ -1,8 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.grow { transition: all .2s ease-in-out; }
+.grow:hover { transform: scale(1.05); }
+
 .auctionItems {
   display: grid;
   grid-template-columns: auto;
   grid-gap: 2rem;
   grid-auto-rows: 1fr;
+}
+
+.auctionItem {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
 
 @media screen and (min-width: 750px) {
@@ -22,3 +34,4 @@
     grid-template-columns: auto auto auto auto;
   }
 }
+

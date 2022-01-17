@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import AuctionItem from './auctionItemCard';
-import './auctionItems.css';
 
 function AuctionItems({items}) {
   const [showDayOne, setShowDayOne] = useState(true);

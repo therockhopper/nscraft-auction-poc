@@ -7,7 +7,6 @@ import AuctionItems from '../components/auctionItems';
 import AuctionItem from '../components/auctionItem';
 import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
 import options from '../components/contentfullRichTextOptions'
-import './index.css';
 
 const client = require('contentful').createClient({
   space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,

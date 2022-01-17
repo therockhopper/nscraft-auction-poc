@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import './auctionItemCard.css';
+
 
 function AuctionItem({item}) {
   let imageStyle = {};
