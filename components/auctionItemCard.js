@@ -49,6 +49,9 @@ function AuctionItem({item}) {
               {item.fields.itemNumber && '#'}
               {item.fields.itemNumber && item.fields.itemNumber}
             </span>
+            <span className="text-gray-90 text-sm flex justify-end">
+              {item.fields.year ? item.fields.year : '2020'}
+            </span>
           </div>
         </div>
       </div>
