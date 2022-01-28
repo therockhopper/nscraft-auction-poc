@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from 'react';
+import {Input, Checkbox} from 'antd';
+import React, {useEffect, useState} from 'react';
 import AuctionItem from './auctionItemCard';
 
 function AuctionItems({items}) {
@@ -104,9 +105,8 @@ function AuctionItems({items}) {
               clipRule="evenodd"
             />
           </svg>
-          <input
+          <Input
             placeholder="Search All Items"
-            type="text"
             id="searchItems"
             value={textSearch}
             onChange={e => setTextSearch(e.target.value)}
@@ -116,58 +116,47 @@ function AuctionItems({items}) {
         <div className="mx-6 flex flex-col md:flex-row md:items-center md:align-center order-1 lg:order-2">
 
           <div className="flex py-2 items-center">
-            <input
-              type="checkbox"
+            <Checkbox
               id="showReservedCheckBox"
               name="showReserved"
               className="mr-2"
               checked={showReserved}
-              onChange={() => toggleShowReserved()}
-            />
-            <label
-              className="cursor-pointer mr-6"
-              htmlFor="showReservedCheckBox">
+              onChange={() => toggleShowReserved()} >
               Acquired Items
-            </label>
+            </Checkbox>
           </div>
           <div className="flex py-2 items-center">
-            <input
-              type="checkbox"
+            <Checkbox
               id="showDayOne"
               name="showDayOne"
               className="mr-2"
               checked={showDayOne}
               onChange={() => toggleShowDayOne()}
-            />
-            <label className="cursor-pointer mr-6" htmlFor="showDayOne">
+            >
               6pm-8pm Items
-            </label>
+            </Checkbox>
           </div>
           <div className="flex py-2 items-center">
-            <input
-              type="checkbox"
+            <Checkbox
               id="showDayTwo"
               name="showDayTwo"
               className="mr-2"
               checked={showDayTwo}
               onChange={() => toggleShowDayTwo()}
-            />
-            <label className="cursor-pointer mr-6" htmlFor="showDayTwo">
+            >
               8:30pm-10:30pm Items
-            </label>
+            </Checkbox>
           </div>
           <div className="flex py-2 items-center">
-            <input
-              type="checkbox"
+            <Checkbox
               id="showSilentAuction"
               name="showSilentAuction"
               className="mr-2"
               checked={showSilentAuction}
               onChange={() => toggleShowSilentAuction()}
-            />
-            <label className="cursor-pointer mr-6" htmlFor="showSilentAuction">
+            >
               Silent Auction Items
-            </label>
+            </Checkbox>
           </div>
         </div>
       </div>
