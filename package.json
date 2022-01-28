@@ -21,8 +21,7 @@
     "postcss-preset-env": "^6.7.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "react-modal": "^3.11.2",
-    "react-responsive-carousel": "^3.2.10"
+    "react-modal": "^3.11.2"
   },
   "devDependencies": {
     "antd": "^4.18.5",

@@ -1,4 +1,5 @@
-import {Input, Checkbox} from 'antd';
+import {SearchOutlined} from '@ant-design/icons';
+import {Checkbox, Input } from 'antd';
 import React, {useEffect, useState} from 'react';
 import AuctionItem from './auctionItemCard';
 
@@ -94,19 +95,9 @@ function AuctionItems({items}) {
     <div>
       <div className="flex flex-col lg:flex-row align-center p-4">
         <div className="flex mb-6 lg:mb-0 align-center items-center order-2 lg:order-2 py-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            className="w-6 text-gray-80">
-            <path
-              fillRule="evenodd"
-              d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-              clipRule="evenodd"
-            />
-          </svg>
           <Input
             placeholder="Search All Items"
+            prefix={<SearchOutlined />}
             id="searchItems"
             value={textSearch}
             onChange={e => setTextSearch(e.target.value)}

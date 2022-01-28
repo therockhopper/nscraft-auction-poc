@@ -1,9 +1,9 @@
 import {useEffect, useState} from 'react';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import {Carousel} from 'react-responsive-carousel';
+import {Carousel, Image } from 'antd';
 
 function AuctionItemCarousel({item}) {
   const [pictures, setPictures] = useState([]);
+
   useEffect(() => {
     if (!item) return
     let pictures = [];
@@ -23,14 +23,12 @@ function AuctionItemCarousel({item}) {
   }, [item]);
 
   return (
-    <Carousel className="w-full">
-    {pictures && pictures.map((p, index) => {
-      return (
-        <div key={p.url + index}>
-        <img src={'https://' + p.url} />
-        </div>
-      );
-    })}
+    <Carousel className="w-full" autoplay>
+      {pictures && pictures.map((p, index) => {
+        return (
+          <Image key={p.url + index} src={'https://' + p.url} />
+        );
+      })}
     </Carousel>
   );
 }
