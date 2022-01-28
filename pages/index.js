@@ -82,7 +82,7 @@ function HomePage({homeHeroContent}) {
 }
 
 export async function getServerSideProps(context) {
-  const resp = await client.getEntry('1RrCILWJJh8DwK3QtINEiy');
+  const resp = await client.getEntry('7u2mH2GWhVYpHigKohhTxo');
   const homeHeroContent = resp.fields;
   return {
     props: {homeHeroContent},

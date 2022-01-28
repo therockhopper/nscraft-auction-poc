@@ -3,11 +3,6 @@ import AuctionItem from './auctionItemCard';
 
 function AuctionItems({items}) {
 
-  const [showPastItems, setShowPastItems] = useState(false);
-  const toggleShowPastItems = () => {
-    setShowPastItems(!showPastItems);
-  };
-
   const [showDayOne, setShowDayOne] = useState(true);
   const toggleShowDayOne = () => {
     setShowDayOne(!showDayOne);
@@ -63,12 +58,6 @@ function AuctionItems({items}) {
         }
 
         if (!showReserved) return;
-      }
-      const currentYear = new Date().getFullYear()
-
-      if (!showPastItems && !year || year <= currentYear ) {
-        // year is less than current year, and user only wants to see current year
-        return
       }
 
       if (showSilentAuction && itemNumber > 80) {
@@ -180,23 +169,6 @@ function AuctionItems({items}) {
               Silent Auction Items
             </label>
           </div>
-
-          <div className="flex py-2 items-center">
-            <input
-              type="checkbox"
-              id="showPastItemsCheckbox"
-              name="showPastItems"
-              className="mr-2"
-              checked={showPastItems}
-              onChange={() => toggleShowPastItems()}
-            />
-            <label
-              className="cursor-pointer"
-              htmlFor="showPastItemsCheckbox">
-              Previous year(s) items
-            </label>
-          </div>
-
         </div>
       </div>
       <ul className="auctionItems px-2">
