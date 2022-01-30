@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
-import AuctionItemCarousel from './auctionItemCarousel';
 import AuctionItemBody from './auctionItemBody';
-import {Carousel  } from 'antd';
+import AuctionItemCarousel from './auctionItemCarousel';
+
 
 const client = require('contentful').createClient({
   space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
@@ -15,14 +15,6 @@ function AuctionItem({id}) {
     const item = await client.getEntry(id);
     setItem(item);
   }
-
-  const contentStyle = {
-    height: '160px',
-    color: '#fff',
-    lineHeight: '160px',
-    textAlign: 'center',
-    background: '#364d79',
-  };
 
   // Watch for id and get item
   useEffect(() => {

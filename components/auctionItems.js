@@ -62,18 +62,19 @@ function AuctionItems({items}) {
         if (!showReserved) return;
       }
 
-      if (showSilentAuction && itemNumber > 80) {
+      // any itesm above 100 is silent auction
+      if (showSilentAuction && itemNumber > 100) {
         // don't show silent auction item
         results.push(item);
         return;
       }
 
-      if (showDayOne && itemNumber <= 40) {
+      if (showDayOne && itemNumber <= 50) {
         results.push(item);
         return;
       }
 
-      if (showDayTwo && itemNumber > 40 && itemNumber <= 80) {
+      if (showDayTwo && itemNumber > 50 && itemNumber <= 100) {
         results.push(item);
         return;
       }

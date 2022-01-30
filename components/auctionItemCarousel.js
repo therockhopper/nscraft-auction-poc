@@ -1,5 +1,5 @@
-import {useEffect, useState} from 'react';
-import {Carousel, Image } from 'antd';
+import { Carousel, Image } from 'antd';
+import { useEffect, useState } from 'react';
 
 function AuctionItemCarousel({item}) {
   const [pictures, setPictures] = useState([]);
@@ -26,7 +26,7 @@ function AuctionItemCarousel({item}) {
     <Carousel className="w-full" autoplay>
       {pictures && pictures.map((p, index) => {
         return (
-          <Image key={p.url + index} src={'https://' + p.url} />
+          <Image key={p.url + index} src={'https://' + p.url} preview={false} />
         );
       })}
     </Carousel>
