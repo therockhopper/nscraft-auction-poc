@@ -20,7 +20,7 @@ function HomePage({homeHeroContent}) {
   const [homeHeroBody, setHomeHeroBody] = useState([]);
 
   async function fetchEntries() {
-    const entries = await client.getEntries({content_type: 'auctionItem'});
+    const entries = await client.getEntries({content_type: 'auctionItem', limit: 200});
     if (entries.items) return entries.items;
   }
 
