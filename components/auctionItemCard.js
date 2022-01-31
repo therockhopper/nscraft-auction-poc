@@ -16,7 +16,7 @@ function AuctionItem({item}) {
           style={imageStyle}
           src={item.fields.poster.fields.file.url}
           alt="Item Poster"
-          className="absolute top-0 w-full h-full object-cover"
+          className="absolute top-0 w-full h-full object-cover h-64"
         />
       </div>
         <div className="flex flex-col px-4 pt-6">
