@@ -1,6 +1,9 @@
+import {CloseOutlined} from '@ant-design/icons';
+import {Space} from 'antd';
 import {useEffect, useState} from 'react';
 import AuctionItemBody from './auctionItemBody';
 import AuctionItemCarousel from './auctionItemCarousel';
+import Router from 'next/router'
 
 
 const client = require('contentful').createClient({
@@ -27,12 +30,13 @@ function AuctionItem({id}) {
     <div className="flex flex-col md:p-4">
       {!!item ? (
         <div className="flex flex-col md:flex-row">
-          <div className="w-full md:w-1/3">
+          <div className="w-full md:w-1/2">
             <AuctionItemCarousel item={item} />
           </div>
           <div className="md:ml-6">
             <AuctionItemBody item={item} />
           </div>
+          <Space onClick={() => Router.back()} className="absolute top-o right-6 cursor-pointer"><CloseOutlined style={{fontSize: '18px', color: '#ff0000'}}/></Space>
         </div>
       ) : (
         'loading..'

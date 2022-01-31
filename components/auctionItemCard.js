@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+import { Card } from 'antd';
 
 function AuctionItem({item}) {
   let imageStyle = {};
@@ -10,15 +11,10 @@ function AuctionItem({item}) {
   }
   return (
     <Link href={`/?itemId=${item.sys.id}`} as={`/item/${item.sys.id}`}>
-      <div className="auctionItem bg-gray-100 grow cursor-pointer overflow-hidden border-b-4 border-blue-500 w-full h-full">
-      <div className="relative w-full pb-9/12">
-        <img
-          style={imageStyle}
-          src={item.fields.poster.fields.file.url}
-          alt="Item Poster"
-          className="absolute top-0 w-full h-full object-cover h-64"
-        />
-      </div>
+      <Card
+        hoverable
+        style={{minWidth: '320px', width: '25vw', maxWidth: '500px' }}
+        cover={<img alt="example" src={item.fields.poster.fields.file.url} style={{objectFit: 'cover', height: '25vw', maxHeight: '350px' }} />} >
         <div className="flex flex-col px-4 pt-6">
           <p className="text-blue-500 font-semibold text-xs mb-1 leading-none">
             {item.fields.company}
@@ -54,7 +50,8 @@ function AuctionItem({item}) {
             </span>
           </div>
         </div>
-      </div>
+      </Card>
+
     </Link>
   );
 }
