@@ -38,7 +38,7 @@ function AuctionItem({item}) {
           </div>
           <div className="flex flex-col items-end">
             <span className="text-gray-90 text-sm flex justify-end">
-              {item.fields.itemNumber > 80 && 'Silent Auction '}
+              {item.fields.silentAuction && 'Silent Auction '}
               {item.fields.itemNumber && '#'}
               {item.fields.itemNumber && item.fields.itemNumber}
             </span>
