@@ -1,6 +1,10 @@
-import Link from 'next/link';
+import {Card, Modal, Button} from 'antd';
+import {useState} from "react";
+import {CloseOutlined} from '@ant-design/icons';
 
-import { Card } from 'antd';
+import AuctionItemBody from './auctionItemBody';
+import AuctionItemCarousel from './auctionItemCarousel';
+
 
 function AuctionItem({item}) {
   let imageStyle = {};
@@ -9,9 +13,21 @@ function AuctionItem({item}) {
       filter: 'grayscale(90%) blur(3px)',
     };
   }
+
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleClose = () => {
+    setIsModalVisible(false);
+  };
+
   return (
-    <Link href={`/?itemId=${item.sys.id}`} as={`/item/${item.sys.id}`}>
+    <>
       <Card
+        onClick={showModal}
         hoverable
         style={{minWidth: '320px', width: '25vw', maxWidth: '500px' }}
         cover={<img alt="example" src={item.fields.poster.fields.file.url} style={{objectFit: 'cover', minHeight: '200px', height: '25vw', maxHeight: '350px' }} />} >
@@ -52,8 +68,24 @@ function AuctionItem({item}) {
           </div>
         </div>
       </Card>
+      <Modal visible={isModalVisible} centered
+        footer={[
+          <Button key="back" onClick={handleClose}>
+            Return
+          </Button>]} >
 
-    </Link>
+        <div className="flex flex-col md:flex-row">
+          <div className="w-full md:w-1/2">
+            <AuctionItemCarousel item={item} />
+          </div>
+          <div className="md:ml-6">
+            <AuctionItemBody item={item} />
+          </div>
+        </div>
+
+
+      </Modal>
+    </>
   );
 }
 export default AuctionItem;

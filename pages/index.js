@@ -1,10 +1,7 @@
 import {useEffect, useState} from 'react';
 import noScroll from 'no-scroll';
-import {useRouter} from 'next/router';
 import Head from 'next/head';
-import Modal from 'react-modal';
 import AuctionItems from '../components/auctionItems';
-import AuctionItem from '../components/auctionItem';
 import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
 import options from '../components/contentfullRichTextOptions'
 
@@ -46,15 +43,6 @@ function HomePage({homeHeroContent}) {
     return () => clearInterval(interval);
   }, []);
 
-  Modal.setAppElement('#__next');
-
-  const router = useRouter();
-
-  useEffect(() => {
-    const open = !!router.query.itemId;
-    open ? noScroll.on() : noScroll.off();
-    setIsOpen(open);
-  }, [router]);
 
   return (
     <div className="flex flex-col">
@@ -69,14 +57,7 @@ function HomePage({homeHeroContent}) {
           {homeHeroBody}
         </div>
       </div>
-      <Modal
-        isOpen={isOpen}
-        onRequestClose={() => router.push('/')}
-        shouldFocusAfterRender={false}
-        contentLabel="Item modal">
-        <AuctionItem id={router.query.itemId}></AuctionItem>
-      </Modal>
-      <AuctionItems items={auctionItems} />
+            <AuctionItems items={auctionItems} />
     </div>
   );
 }
