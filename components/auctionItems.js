@@ -51,7 +51,7 @@ function AuctionItems({items}) {
         if (!matches) return; // does not match text search, skip it
       }
 
-      const {itemNumber = 0, taken, year} = item.fields;
+      const {itemNumber = 0, silentAuction, taken, year} = item.fields;
 
       if (taken) {
         if (!showDayOne && !showDayTwo && showReserved) {
@@ -63,7 +63,7 @@ function AuctionItems({items}) {
       }
 
       // any itesm above 100 is silent auction
-      if (showSilentAuction && itemNumber > 100) {
+      if (showSilentAuction && silentAuction) {
         // don't show silent auction item
         results.push(item);
         return;

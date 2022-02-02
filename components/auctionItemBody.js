@@ -34,7 +34,7 @@ export default function AuctionItemBody({item}) {
 
         <p className="leading-none pb-2">${item.fields.value}</p>
         <span className="text-gray-90">
-          {item.fields.itemNumber > 80 && 'Silent Auction '}
+          {item.fields.silentAuction && 'Silent Auction '}
           {item.fields.itemNumber && '#'}
           {item.fields.itemNumber && item.fields.itemNumber}
         </span>
