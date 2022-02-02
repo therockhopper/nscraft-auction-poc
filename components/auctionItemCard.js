@@ -1,6 +1,5 @@
 import {Card, Modal, Button} from 'antd';
 import {useState} from "react";
-import {CloseOutlined} from '@ant-design/icons';
 
 import AuctionItemBody from './auctionItemBody';
 import AuctionItemCarousel from './auctionItemCarousel';
@@ -68,8 +67,7 @@ function AuctionItem({item}) {
           </div>
         </div>
       </Card>
-      <Modal visible={isModalVisible} centered
-        footer={[
+      <Modal visible={isModalVisible} centered onCancel={handleClose} footer={[
           <Button key="back" onClick={handleClose}>
             Return
           </Button>]} >
