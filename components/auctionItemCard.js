@@ -71,14 +71,13 @@ function AuctionItem({item}) {
           <Button key="back" onClick={handleClose}>
             Return
           </Button>]}
-        width="50vh"
       >
 
-        <div className="flex flex-col md:flex-row">
-          <div className="w-full md:w-1/2">
+        <div className="flex flex-col">
+          <div className="w-full">
             <AuctionItemCarousel item={item} />
           </div>
-          <div className="md:ml-6">
+          <div className="mt-10">
             <AuctionItemBody item={item} />
           </div>
         </div>
