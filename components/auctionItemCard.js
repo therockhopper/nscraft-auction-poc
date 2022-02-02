@@ -71,7 +71,7 @@ function AuctionItem({item}) {
           <Button key="back" onClick={handleClose}>
             Return
           </Button>]}
-        width="50vw"
+        width="50vh"
       >
 
         <div className="flex flex-col md:flex-row">
