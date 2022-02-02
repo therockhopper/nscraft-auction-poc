@@ -70,7 +70,9 @@ function AuctionItem({item}) {
       <Modal visible={isModalVisible} centered onCancel={handleClose} footer={[
           <Button key="back" onClick={handleClose}>
             Return
-          </Button>]} >
+          </Button>]}
+        width="50vw"
+      >
 
         <div className="flex flex-col md:flex-row">
           <div className="w-full md:w-1/2">
@@ -80,8 +82,6 @@ function AuctionItem({item}) {
             <AuctionItemBody item={item} />
           </div>
         </div>
-
-
       </Modal>
     </>
   );
