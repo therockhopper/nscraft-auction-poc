@@ -14,7 +14,7 @@ function AuctionItem({item}) {
       <Card
         hoverable
         style={{minWidth: '320px', width: '25vw', maxWidth: '500px' }}
-        cover={<img alt="example" src={item.fields.poster.fields.file.url} style={{objectFit: 'cover', height: '25vw', maxHeight: '350px' }} />} >
+        cover={<img alt="example" src={item.fields.poster.fields.file.url} style={{objectFit: 'cover', minHeight: '200px', height: '25vw', maxHeight: '350px' }} />} >
         <div className="flex flex-col">
           <p className="text-blue-500 font-semibold text-xs">
             {item.fields.company}
